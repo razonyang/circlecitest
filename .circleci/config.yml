@@ -51,6 +51,6 @@ workflows:
         - not:
             matches:
               pattern: "NOCIRCLECI"
-              value: $GIT_COMMIT_DESC
+              value: git log --format=oneline -n 1 $CIRCLE_SHA1
     jobs:
       - build
