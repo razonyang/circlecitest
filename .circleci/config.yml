@@ -43,5 +43,14 @@ jobs:
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
   sample:
+    when:
+      and:
+        - matches:
+            pattern: "^main"
+            value: << pipeline.git.branch >>
+        - not:
+            matches:
+              pattern: "NOCIRCLECI"
+              value: git log --format=oneline -n 1 $CIRCLE_SHA1
     jobs:
       - build
