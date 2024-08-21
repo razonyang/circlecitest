@@ -42,7 +42,7 @@ jobs:
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  sample:
     when:
       and:
         - matches:
@@ -51,6 +51,6 @@ workflows:
         - not:
             matches:
               pattern: "NOCIRCLECI"
-              value: << pipeline.trigger_parameters.github_app.commit_title >>
+              value: $GIT_COMMIT_DESC
     jobs:
       - build
