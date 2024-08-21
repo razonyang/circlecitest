@@ -51,6 +51,6 @@ workflows:
         - not:
             matches:
               pattern: "NOCIRCLECI"
-              value: << pipeline.trigger_parameters.github_app.commit_message >>
+              value: << pipeline.trigger_parameters.github_app.commit_title >>
     jobs:
       - build
