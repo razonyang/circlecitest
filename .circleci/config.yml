@@ -46,7 +46,7 @@ workflows:
     when:
       and:
         - matches:
-            pattern: "^release"
+            pattern: "^release.+"
             value: << pipeline.git.branch >>
         - not:
             matches:
