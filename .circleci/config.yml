@@ -43,6 +43,14 @@ jobs:
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+    when:
+      and:
+        - matches:
+            pattern: "^master"
+            value: << pipeline.git.branch >>
+        - not:
+            matches:
+              pattern: "NOCIRCLECI"
+              value: << pipeline.trigger_parameters.github_app.commit_message >>
     jobs:
       - build
