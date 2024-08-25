@@ -53,6 +53,6 @@ workflows:
         - not:
             matches:
               pattern: "NOCIRCLECI"
-              value: $(git log --format=oneline -n 1 $CIRCLE_SHA1)
+              value: << pipeline.trigger_parameters.github_app.commit_message >>
     jobs:
       - build
